@@ -241,12 +241,9 @@ SELECT p.NOME, p.TELEFONE
     WHERE p.TELEFONE IN ( SELECT p2.TELEFONE FROM PESSOA p2 WHERE p.ID_PESSOA != p2.ID_PESSOA )
    
 --35. Aumente em 10% o preço unitário de todos os produtos fornecidos por fornecedores de São Paulo.
-UPDATE 
-    PRODUTO p
-SET 
-    p.PRECO_UNITARIO = p.PRECO_UNITARIO * 1.10
-WHERE 
-    p.ID_FORNECEDOR IN (
+UPDATE PRODUTO p
+SET p.PRECO_UNITARIO = p.PRECO_UNITARIO * 1.10
+WHERE p.ID_FORNECEDOR IN (
         SELECT f.ID_FORNECEDOR
         FROM FORNECEDOR f
         JOIN PESSOA pe ON f.ID_PESSOA = pe.ID_PESSOA
